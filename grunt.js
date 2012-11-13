@@ -8,9 +8,6 @@ module.exports = function(grunt) {
     lint: {
       files: ['lib/**/*.js', 'test/**/*.js', '! test/lib/**/*.js', 'www/js/**/*.js']
     },
-    qunit: {
-      files: ['test/**/test-*.html']
-    },
     watch: {
       files: [ '<config:lint.files>', 'www/templates/*.tmpl' ],
       tasks: 'test'
@@ -36,7 +33,10 @@ module.exports = function(grunt) {
         app : true
       }
     },
-    uglify: {}
+    uglify: {},
+    mocha: {
+      index: [ 'test/runner/index.html' ]
+    }
   });
 
   grunt.registerTask('build-template-mocks', 'Build template mocks', function() {
@@ -70,7 +70,8 @@ module.exports = function(grunt) {
     });
   });
 
-  grunt.registerTask('default', 'lint qunit');
-  grunt.registerTask('test', 'build-template-mocks qunit lint');
+  grunt.loadNpmTasks('grunt-mocha');
+  grunt.registerTask('test', 'build-template-mocks mocha');
+  grunt.registerTask('default', 'lint test');
 };
 

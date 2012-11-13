@@ -5,6 +5,8 @@
   "dependencies" : {
     "Faker": "~0.1",
     "express": "~3",
-    "underscore": "~1"
+    "underscore": "~1",
+    "grunt-mocha": "0.1.x",
+    "mocha": "1.6.x"
   }
 }
