@@ -10,6 +10,11 @@ define([ 'app/views/likes' ], function() {
       likesEl.remove();
     });
 
+    test('likes constructor', function() {
+      var likes = new app.Likes({ el : '#likes' });
+      assert( likes );
+    });
+
     test('likes are properly displayed', function() {
       var likes = new app.Likes({ el : '#likes' });
 
